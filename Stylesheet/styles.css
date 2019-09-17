@@ -1,0 +1,51 @@
+body{
+    display:flex;
+    flex-direction:row; 
+    background-image:url("../Images/Background.jpg");
+    }
+    .game{
+        margin-top:100px;
+        width:70vw;
+        height:40vw;
+        background-image:url("../Images/Ocean.png");
+        background-repeat: no-repeat;
+        border:3px solid black;
+        position:relative;
+    }
+#boat{
+    position:relative;
+    width:50px;
+    top:80%;
+    left:47%;
+    
+}
+.trashCan{
+    position:relative;
+    width:35px;
+}
+
+.heart{
+    position:relative;
+    width:55px;
+    height:55px;
+}
+.lives{
+    width:300px;
+}
+.cross{
+    position:relative;
+    width:55px;
+    height:55px;
+}
+
+.trashChips{
+    position:relative;
+    width:60px;
+}
+.trashBag{
+    position:relative;
+    width:60px;
+}
+.losing-screen{
+    display:none;
+}
