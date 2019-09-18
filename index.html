@@ -8,31 +8,81 @@
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="Stylesheet/styles.css">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Save the Ocean</title>
 </head>
 
 <body>
+    <div class="startingScreen">
+        <h1>4 Facts about the pollution of the ocean</h1>
+        <div class="facts">
+        <div class="fact">
+        <h2>Fact 1</h2>
+        <p>Plastic is the most common element that is found in the ocean. It is harmful for the environment as it does not get break down easily and is often considered as food by marine animals.</p>
+        </div>
+        <div class="fact">
+        <h2>Fact 2</h2>
+        <p>There is an island of garbage twice the size of Texas inside the Pacific Ocean: the North Pacific Gyre off the coast of California is the largest oceanic garbage site in the entire world. There, the number of floating plastic pieces outnumbers total marine life six to one in the immediate vicinity.</p>
+        </div>
+        <div class="fact">
+        <h2>Fact 3</h2>
+        <p>Over one million seabirds are killed by ocean pollution each year. Three hundred thousand dolphins and porpoises die each year as a result of becoming entangled in discarded fishing nets, among other items. One hundred thousand sea mammals are killed in the ocean by pollution each year.</p>
+        </div>
+        <div class="fact">
+        <h2>Fact 4</h2>
+        <p>As 70% of the earth is covered with water, people actually assumed that all pollutants would be diluted and get disappeared. But in reality, they have not disappeared and their effects can be easily seen as they have entered the food chain.</p>
+        </div>
+    </div>
+    <div id="buttonWrapper">
+        <button id="button">Start!</button>
+    </div>
+    </div>
+
     <div class="gameElements">
-    <div class="lives">
-        <h2>Lives:</h2>
-        <img src="Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png" class="heart"
-            id="heart1">
-        <img src="Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png" class="heart"
-            id="heart2">
-        <img src="Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png" class="heart"
-            id="heart3">
 
-    </div>
-    <div class="losing-screen">
-        <img src="Images/losing _screen.jpg">
-    </div>
     <section class="game">
+        <div class="gameInfo">
+            <div class="lives">
+                    <h2>Lives:</h2>
+                    <img src="Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png" class="heart"
+                        id="heart1">
+                    <img src="Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png" class="heart"
+                        id="heart2">
+                    <img src="Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png" class="heart"
+                        id="heart3">
+                
+                </div>
 
+                <div class="scoreBoard">
+                    <h2>Score:</h2>
+                    <p class="score">0</p>
+                </div>
+                </div>
         <img src="Images/boat.png" id="boat">
 
 
     </section>
+
     </div>
+    <section class="instructions">
+        <h1>Instructions</h1>
+        <ul class="instructions-list">
+            <li>
+            The Ocean is filled with trash! You better try to avoid it! Use W,A,S,D to move!
+            </li>
+    
+            <li>
+            Collect the coins!
+            </li>
+
+            <li>
+                Have Fun!
+            </li>
+        </ul>
+    </section>
+    <section class="endScreen">
+            
+        </section>
     <script src="Javascript/script.js"></script>
 </body>
 

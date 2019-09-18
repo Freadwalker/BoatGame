@@ -1,26 +1,28 @@
+*{
+    font-family:Roboto Slab,serif;
+}
 body{
     display:flex;
     flex-direction:row; 
-    background-image:url("../Images/Background.jpg");
+    background-image:url("../Images/videoblocks-pan-close-up-shot-of-trash-and-rubbish-on-sand-of-seashore-on-sea-background-environmental-problem-on-beach_sezmmbg3f_thumbnail-full01.png");
     }
-    .game{
-        margin-top:100px;
-        width:70vw;
-        height:40vw;
+.game{
+        width:100vw;
+        height:50vw;
         background-image:url("../Images/Ocean.png");
         background-repeat: no-repeat;
         border:3px solid black;
         position:relative;
     }
 #boat{
-    position:relative;
+    position:absolute;
     width:50px;
     top:80%;
     left:47%;
     
 }
 .trashCan{
-    position:relative;
+    position:absolute;
     width:35px;
 }
 
@@ -39,13 +41,147 @@ body{
 }
 
 .trashChips{
-    position:relative;
+    position:absolute;
     width:60px;
 }
 .trashBag{
-    position:relative;
+    position:absolute;
     width:60px;
 }
-.losing-screen{
+.endScreen{
     display:none;
+    width:100vw;
+    color: white;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center; 
+
+}
+.gameElements{
+   display:none;
+}
+.startingScreen{
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.startingScreen h1{
+    text-align:center;
+    font-size:5em;
+    font-weight:700;
+}
+.startingScreen h2{
+    font-size:2em;
+    font-weight:800;
+    color:rgb(27, 27, 27);
+}
+p{
+    width:30vw;
+    font-size:1.3em;
+    font-weight:800;
+}
+.facts{
+    display:flex;
+    flex-wrap:wrap;
+}
+.fact{
+    width:49%;
+    text-shadow:10px 10px 8px white;
+}
+#button{
+    font-size:3em;
+    width:20vw;
+    height:5vw;
+    border-radius:10px;
+    border-style:none;
+    animation:colorChange 10s infinite;
+    font-weight:800;
+    color:rgb(189, 180, 180)
+}
+@keyframes colorChange{
+    10%{
+        background-color:darkblue;
+    }
+    20%{
+        background-color:black;
+    }
+    30%{
+        background-color:darkblue;
+    }
+    40%{
+        background-color:blue;
+    }
+    50%{
+        background-color:black;
+    }
+    60%{
+        background-color:darkblue;
+    }
+    70%{
+        background-color:blue;
+    }
+    80%{
+        background-color:black;
+    }
+    90%{
+        background-color:darkblue;
+    }
+    100%{
+        background-color:blue;
+    }
+}
+#buttonWrapper{
+    margin-top:60px;
+    width:100vw;
+    display:flex;
+    justify-content:center;
+}
+.gameInfo{
+    position:fixed; 
+    display:flex;
+    justify-content:space-between;
+    width:120vw;
+    z-index:99;
+}
+.coin{
+    position:absolute;
+    width:60px;
+}
+.scoreBoard{
+    font-size:2em;
+}
+.scoreEnd{
+    width:100vw;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    font-size:3em;
+}
+.paper{
+    width:50vw;
+}
+.finalGif{
+    width:60vw;
+}
+.instructions{
+    display:none;
+    width:100vw;
+    color:white;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.instructions h1{
+    font-size:5em;
+}
+.instructions ul li{
+    margin-top:50px;
+    font-size:3em;
+    position:relative;
+    left:24%;
+    width:50%;
+    list-style-type:none;
+    text-align: center;
 }
