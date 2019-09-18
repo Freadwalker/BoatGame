@@ -15,25 +15,30 @@ $("#button").click(function() {
 //   };
 
 function isCollide(element1, element2) {
-  var a = {
-    y: 100 - element1.offset().top - element1.height(),
-    x: element1.offset().left,
-    height: element1.height(),
-    width: element1.width()
-  };
-  var b = {
-    y: 100 - element2.offset().top - element2.height(),
-    x: element2.offset().left,
-    height: element2.height(),
-    width: element2.width()
-  };
-  console.log(element2)
-  return !(
-    a.y + a.height < b.y ||
-    a.y > b.y + b.height ||
-    a.x + a.width < b.x ||
-    a.x > b.x + b.width
-  );
+    if(element1 == undefined || element2 == undefined) {
+        return false
+    } else {
+        var a = {
+            y: 100 - element1.offset().top - element1.height(),
+            x: element1.offset().left,
+            height: element1.height(),
+            width: element1.width()
+        };
+        var b = {
+            y: 100 - element2.offset().top - element2.height(),
+            x: element2.offset().left,
+            height: element2.height(),
+            width: element2.width()
+        };
+        // console.log(element2)
+        //identify the trash to only log the element2 when it's not trash
+        return !(
+            a.y + a.height < b.y ||
+            a.y > b.y + b.height ||
+            a.x + a.width < b.x ||
+            a.x > b.x + b.width
+        );
+    }
 }
 class Trash {
   constructor() {
@@ -166,18 +171,21 @@ class Game {
           } else if (count === 3) {
             heartReplace($("#heart1"));
             fixThis.lost();
+          
           }
         }
-        for (let i = 0; i < coin.length; i++) {
-          if (checkCollisionCoin(coin.eq(i)) === true) {
-            coin.eq(i).remove();
-            coinSound().appendTo($(".game"));
-            // setTimeout(function(){
-            //     $(".soundy").remove();
-            // },1000)
-            scoreContainer += 3;
-            score.html(scoreContainer);
-          }
+      }
+      for (let i = 0; i < coin.length; i++) {
+        if (checkCollisionCoin(coin.eq(i)) === true) {
+            // debugger
+            console.log(`${coin.length} coin collision`)
+          coin.eq(i).remove();
+          coinSound().appendTo($(".game"));
+          // setTimeout(function(){
+          //     $(".soundy").remove();
+          // },1000)
+          scoreContainer += 3;
+          score.html(scoreContainer);
         }
       }
     }, 10);
@@ -193,9 +201,11 @@ class Game {
     createEndGif(score).appendTo(endScreen);
 }
   lost() {
+    this.boat=undefined;
     var gameHtml = $(".gameElements");
     var body = $("body");
     clearInterval(this.intervalId);
+    console.log("clearing interval")
     clearInterval(intervalTrash)
     clearInterval(intervalCoins)
     this.createEndScreen();
