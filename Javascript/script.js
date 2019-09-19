@@ -1,5 +1,3 @@
-// window.onload=function(){
-
 var intervalCoins;
 var intervalTrash;
 
@@ -12,12 +10,10 @@ $("#button").click(function() {
   $(".gameElements").css(`display`, `block`);
   var game = new Game();},6000)
 });
-//   };
+
 
 function isCollide(element1, element2) {
-    if(element1 == undefined || element2 == undefined) {
-        return false
-    } else {
+    
         var a = {
             y: 100 - element1.offset().top - element1.height(),
             x: element1.offset().left,
@@ -30,6 +26,14 @@ function isCollide(element1, element2) {
             height: element2.height(),
             width: element2.width()
         };
+        if(!(
+          a.y + a.height < b.y ||
+          a.y > b.y + b.height ||
+          a.x + a.width < b.x ||
+          a.x > b.x + b.width
+      )) {
+        debugger
+      }
         // console.log(element2)
         //identify the trash to only log the element2 when it's not trash
         return !(
@@ -38,7 +42,6 @@ function isCollide(element1, element2) {
             a.x + a.width < b.x ||
             a.x > b.x + b.width
         );
-    }
 }
 class Trash {
   constructor() {
@@ -105,8 +108,12 @@ class Trash {
   }
 }
 function coinSound(){
-    var audioElement=$(`<audio src="Sounds/coin.wav" autoplay="true" class="soundy">`)
+    var audioElement=$(`<audio src="Sounds/coin.wav" autoplay="true" class="coinSoundy">`)
     return audioElement
+}
+function trashSound(){
+  var audioElement=$(`<audio src="Sounds/shatter.wav" autoplay="true" class="trashSoundy">`)
+  return audioElement
 }
 class Coin {
   constructor() {
@@ -161,8 +168,10 @@ class Game {
       var score = $(".score");
 
       for (let i = 0; i < trash.length; i++) {
+        if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
         if (checkCollisionTrash(trash.eq(i)) === true) {
           trash.eq(i).remove();
+          trashSound().appendTo(".game");
           count++;
           if (count === 1) {
             heartReplace($("#heart3"));
@@ -175,7 +184,9 @@ class Game {
           }
         }
       }
+    }
       for (let i = 0; i < coin.length; i++) {
+        if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
         if (checkCollisionCoin(coin.eq(i)) === true) {
             // debugger
             console.log(`${coin.length} coin collision`)
@@ -188,6 +199,7 @@ class Game {
           score.html(scoreContainer);
         }
       }
+    }
     }, 10);
     var trash = new Trash();
     var coin = new Coin();
