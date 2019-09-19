@@ -78,7 +78,7 @@ class Trash {
       randomTrash.appendTo(".game");
       setTimeout(function() {
         randomTrash.remove();
-      }, 4000);
+      }, 2000);
     }, 600);
   }
 
