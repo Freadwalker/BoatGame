@@ -33,6 +33,7 @@ body{
 }
 .lives{
     width:300px;
+    animation:score 5s infinite;
 }
 .cross{
     position:relative;
@@ -141,7 +142,7 @@ p{
     position:fixed; 
     display:flex;
     justify-content:space-between;
-    width:120vw;
+    width:95vw;
     z-index:99;
 }
 .coin{
@@ -149,7 +150,46 @@ p{
     width:60px;
 }
 .scoreBoard{
-    font-size:2em;
+    display:flex;
+    font-size:2.2em;
+    animation:score 5s infinite;   
+   align-items:center;
+
+}
+@keyframes score{
+    0%{
+        color:blue;
+    }
+    10%{
+        color:red;
+    }
+    20%{
+        color:green;
+    }
+    30%{
+        color:yellow;
+    }
+    40%{
+        color:pink;
+    }
+    50%{
+        color:violet;
+    }
+    60%{
+        color:orange;
+    }
+    70%{
+        color:brown;
+    }
+    80%{
+        color:blue;
+    }
+    90%{
+        color:green;
+    }
+    100%{
+        color:violet;
+    }
 }
 .scoreEnd{
     width:100vw;
@@ -184,4 +224,13 @@ p{
     width:50%;
     list-style-type:none;
     text-align: center;
+}
+.score{
+    font-size:2em;
+    width:30vw;
+    font-size:1.3em;
+    font-weight:800;
+}
+@media (max-width: 1800px){
+    
 }

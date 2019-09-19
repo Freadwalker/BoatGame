@@ -33,7 +33,7 @@ function isCollide(element1, element2) {
           a.x + a.width < b.x ||
           a.x > b.x + b.width
       )) {
-        debugger
+       
       }
         // console.log(element2)
         //identify the trash to only log the element2 when it's not trash
@@ -80,7 +80,8 @@ class Trash {
   }
 
   randomizeSpawn(trash) {
-    var randomNumber = Math.floor(Math.random() * 1800);
+    var windowWidth=$(window).width();
+    var randomNumber = Math.floor(Math.random() * windowWidth-38);
     trash.css(`left`, randomNumber);
   }
 
@@ -126,7 +127,8 @@ class Coin {
   }
   
   randomizeSpawn(item) {
-    var randomNumber = Math.floor(Math.random() * 1800);
+    var windowWidth=$(window).width()
+    var randomNumber = Math.floor(Math.random() * windowWidth-38);
     item.css(`left`, randomNumber);
   }
 
@@ -171,7 +173,7 @@ class Game {
         if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
         if (checkCollisionTrash(trash.eq(i)) === true) {
           trash.eq(i).remove();
-          trashSound().appendTo(".game");
+          trashSound().appendTo($(".game"))
           count++;
           if (count === 1) {
             heartReplace($("#heart3"));
@@ -188,15 +190,10 @@ class Game {
       for (let i = 0; i < coin.length; i++) {
         if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
         if (checkCollisionCoin(coin.eq(i)) === true) {
-            // debugger
-            console.log(`${coin.length} coin collision`)
           coin.eq(i).remove();
           coinSound().appendTo($(".game"));
-          // setTimeout(function(){
-          //     $(".soundy").remove();
-          // },1000)
           scoreContainer += 3;
-          score.html(scoreContainer);
+          score.html(`  `+scoreContainer);
         }
       }
     }
@@ -254,7 +251,7 @@ function failSound(){
   return audioElement;
 }
 function backgroundMusic(){
-  var audioElement=$(`<audio src="Sounds/16-Bit Wave Super Nintendo & Sega Genesis RetroWave Mix.mp3" autoplay="true" class="backgroundMusic">`)
+  var audioElement=$(`<audio src="Sounds/16-Bit Wave Super Nintendo & Sega Genesis RetroWave Mix.mp3" autoplay="true" class="backgroundMusic" volume="5.0">`)
   return audioElement;
 }
 class Boat {
