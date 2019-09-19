@@ -17,7 +17,14 @@ class Trash {
   constructor() {
     this.spawnTrash();
   }
-
+  createTrashPlastic(){
+    var trashPlastic=$(`<img class="trashPlastic trash" src="Images/plastictrash.png">`)
+    return trashPlastic;
+  }
+  createTrashBottle(){
+    var trashBottle=$(`<img class="trashBottle trash" src="Images/waterbottle.png">`)
+    return trashBottle;
+  }
   createTrashCan() {
     var trashCan = $(`<img class="trashCan trash" src="Images/can.png">`);
     return trashCan;
@@ -38,13 +45,17 @@ class Trash {
   }
 
   randomizeTrash() {
-    var randomNumber = Math.floor(Math.random() * 3 + 1);
+    var randomNumber = Math.floor(Math.random() * 5 + 1);
     if (randomNumber === 1) {
       return this.createTrashCan();
     } else if (randomNumber === 2) {
       return this.createTrashBag();
     } else if (randomNumber === 3) {
       return this.createTrashChips();
+    }else if(randomNumber=== 4){
+      return this.createTrashBottle();
+    }else if(randomNumber===5){
+      return this.createTrashPlastic();
     }
   }
 
