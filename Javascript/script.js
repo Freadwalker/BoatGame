@@ -9,7 +9,6 @@ $("#button").click(function() {
   setTimeout(function() {
     $(".instructions").css(`display`, `none`);
     $(".gameElements").css(`display`, `block`);
-    $("body").css(`background-image`,`url("Images/Ocean.png")`)
     var game = new Game();
   }, 6000);
 });
