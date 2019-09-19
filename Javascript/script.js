@@ -85,8 +85,8 @@ class Trash {
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=8px`);
-    }, 40);
+      item.css(`top`, `+=12px`);
+    }, 60);
   }
 }
 class Coin {
@@ -121,8 +121,8 @@ class Coin {
 
   moveCoin(item) {
     setInterval(function() {
-      item.css(`top`, `+=8px`);
-    }, 40);
+      item.css(`top`, `+=12px`);
+    }, 60);
   }
 }
 class Game {
@@ -175,7 +175,7 @@ class Game {
           }
         }
       }
-    }, 10);
+    }, 80);
     var trash = new Trash();
     var coin = new Coin();
   }
@@ -202,13 +202,10 @@ class Game {
     var gameHtml = $(".gameElements");
     var body = $("body");
     clearInterval(this.intervalId);
-    console.log("clearing interval");
     clearInterval(intervalTrash);
     clearInterval(intervalCoins);
     this.createEndScreen();
     failSound().appendTo($("body"));
-    // clearInterval(this.intervalId);
-    // gameHtml.remove()
     gameHtml.css("display", "none");
     $(".backgroundMusic").remove();
   }
