@@ -78,14 +78,14 @@ class Trash {
       randomTrash.appendTo(".game");
       setTimeout(function() {
         randomTrash.remove();
-      }, 2000);
+      }, 1700);
     }, 600);
   }
 
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=24px`);
+      item.css(`top`, `+=30px`);
     }, 60);
   }
 }
