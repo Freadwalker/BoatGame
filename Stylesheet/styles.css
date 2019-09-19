@@ -10,7 +10,6 @@ body{
         width:100vw;
         height:50vw;
         background-repeat: no-repeat;
-        position:relative;
     }
 #boat{
     position:absolute;
@@ -86,7 +85,7 @@ p{
 }
 .fact{
     width:40%;
-    text-shadow:10px 10px 8px white;
+    text-shadow:10px 10px 10px white;
     margin-left:10%;
 }
 #button{
@@ -231,6 +230,7 @@ p{
     font-weight:800;
 }
 @media (max-width: 1800px){
+    *{font-size:0.8em}
     #boat{
         width:40px;
     }
