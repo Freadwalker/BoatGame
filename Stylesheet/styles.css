@@ -232,5 +232,44 @@ p{
     font-weight:800;
 }
 @media (max-width: 1800px){
-    
+    #boat{
+        width:40px;
+    }
+    .trashBag{
+    width:50px;
+    }
+    .trashCan{
+    width:27px;
+    }
+    .trashChips{
+    width:50px;
+    }
+}
+@media(max-width:2100px) and (min-width:1900px){
+    #boat{
+        width:60px;
+    }
+    .trashBag{
+    width:70px;
+    }
+    .trashCan{
+    width:43px;
+    }
+    .trashChips{
+    width:70px;
+    }
+}
+@media(max-width:2500px) and (min-width:2101px){
+    #boat{
+        width:70px;
+    }
+    .trashBag{
+    width:80px;
+    }
+    .trashCan{
+    width:53px;
+    }
+    .trashChips{
+    width:80px;
+    }
 }
