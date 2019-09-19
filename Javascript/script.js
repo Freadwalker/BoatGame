@@ -78,14 +78,14 @@ class Trash {
       randomTrash.appendTo(".game");
       setTimeout(function() {
         randomTrash.remove();
-      }, 1700);
-    }, 600);
+      }, 4000);
+    }, 300);
   }
 
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=30px`);
+      item.css(`top`, `+=12px`);
     }, 60);
   }
 }
@@ -201,11 +201,13 @@ class Game {
     this.boat = undefined;
     var gameHtml = $(".gameElements");
     var body = $("body");
-    clearInterval(this.intervalId);
+    clearInterval(this.intervalId);   
     clearInterval(intervalTrash);
     clearInterval(intervalCoins);
     this.createEndScreen();
     failSound().appendTo($("body"));
+    // clearInterval(this.intervalId);
+    // gameHtml.remove()
     gameHtml.css("display", "none");
     $(".backgroundMusic").remove();
   }
