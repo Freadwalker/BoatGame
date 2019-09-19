@@ -79,13 +79,13 @@ class Trash {
       setTimeout(function() {
         randomTrash.remove();
       }, 4000);
-    }, 300);
+    }, 600);
   }
 
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=12px`);
+      item.css(`top`, `+=24px`);
     }, 60);
   }
 }
