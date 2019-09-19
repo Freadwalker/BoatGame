@@ -2,48 +2,18 @@ var intervalCoins;
 var intervalTrash;
 
 $("#button").click(function() {
-    $(".startingScreen").css(`display`, `none`);
-    $(".instructions").css(`display`,`flex`)
-    $("body").css(`background-image`,`url("Images/gameBackground.jpg")`)
-    backgroundMusic().appendTo($("body"));
-    setTimeout(function(){
-  $(".instructions").css(`display`,`none`)
-  $(".gameElements").css(`display`, `block`);
-  var game = new Game();},6000)
+  $(".startingScreen").css(`display`, `none`);
+  $(".instructions").css(`display`, `flex`);
+  $("body").css(`background-image`, `url("Images/gameBackground.jpg")`);
+  backgroundMusic().appendTo($("body"));
+  setTimeout(function() {
+    $(".instructions").css(`display`, `none`);
+    $(".gameElements").css(`display`, `block`);
+    $("body").css(`background-image`,`url("Images/Ocean.png")`)
+    var game = new Game();
+  }, 6000);
 });
 
-
-function isCollide(element1, element2) {
-    
-        var a = {
-            y: 100 - element1.offset().top - element1.height(),
-            x: element1.offset().left,
-            height: element1.height(),
-            width: element1.width()
-        };
-        var b = {
-            y: 100 - element2.offset().top - element2.height(),
-            x: element2.offset().left,
-            height: element2.height(),
-            width: element2.width()
-        };
-        if(!(
-          a.y + a.height < b.y ||
-          a.y > b.y + b.height ||
-          a.x + a.width < b.x ||
-          a.x > b.x + b.width
-      )) {
-       
-      }
-        // console.log(element2)
-        //identify the trash to only log the element2 when it's not trash
-        return !(
-            a.y + a.height < b.y ||
-            a.y > b.y + b.height ||
-            a.x + a.width < b.x ||
-            a.x > b.x + b.width
-        );
-}
 class Trash {
   constructor() {
     this.spawnTrash();
@@ -80,8 +50,8 @@ class Trash {
   }
 
   randomizeSpawn(trash) {
-    var windowWidth=$(window).width();
-    var randomNumber = Math.floor(Math.random() * windowWidth-38);
+    var windowWidth = $(window).width();
+    var randomNumber = Math.floor(Math.random() * (windowWidth - 70))+30;
     trash.css(`left`, randomNumber);
   }
 
@@ -98,7 +68,7 @@ class Trash {
       randomTrash.appendTo(".game");
       setTimeout(function() {
         randomTrash.remove();
-      }, 3800);
+      }, 4000);
     }, 300);
   }
 
@@ -109,26 +79,18 @@ class Trash {
     }, 40);
   }
 }
-function coinSound(){
-    var audioElement=$(`<audio src="Sounds/coin.wav" autoplay="true" class="coinSoundy">`)
-    return audioElement
-}
-function trashSound(){
-  var audioElement=$(`<audio src="Sounds/shatter.wav" autoplay="true" class="trashSoundy">`)
-  return audioElement
-}
 class Coin {
   constructor() {
     this.coin = $(
       `<img class="coin" src="Images/PinClipart.com_falling-coins-clipart_1122855.png">`
     );
     this.spawnCoin();
-    this.intervalCoins
+    this.intervalCoins;
   }
-  
+
   randomizeSpawn(item) {
-    var windowWidth=$(window).width()
-    var randomNumber = Math.floor(Math.random() * windowWidth-38);
+    var windowWidth = $(window).width();
+    var randomNumber = Math.floor(Math.random() * (windowWidth - 70))+30;
     item.css(`left`, randomNumber);
   }
 
@@ -154,106 +116,94 @@ class Coin {
   }
 }
 class Game {
+
   constructor() {
     this.boat = new Boat();
     this.intervalId;
     this.start();
   }
+
   start() {
     var count = 0;
     var fixThis = this;
     var body = $("body");
     var scoreContainer = 0;
-    body.css(`background-image`, `url("Images/gameBackground.jpg")`);
     this.intervalId = setInterval(function() {
       var trash = $(".trash");
       var coin = $(".coin");
       var score = $(".score");
       for (let i = 0; i < trash.length; i++) {
-        if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
-        if (checkCollisionTrash(trash.eq(i)) === true) {
-          trash.eq(i).remove();
-          trashSound().appendTo($(".game"))
-          count++;
-          if (count === 1) {
-            heartReplace($("#heart3"));
-          } else if (count === 2) {
-            heartReplace($("#heart2"));
-          } else if (count === 3) {
-            heartReplace($("#heart1"));
-            fixThis.lost();
-          
+        if (
+          $("#heart1").attr(`src`) ===
+          `Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`
+        ) {
+          if (checkCollisionTrash(trash.eq(i)) === true) {
+            trash.eq(i).remove();
+            trashSound().appendTo($(".game"));
+            count++;
+            if (count === 1) {
+              heartReplace($("#heart3"));
+            } else if (count === 2) {
+              heartReplace($("#heart2"));
+            } else if (count === 3) {
+              heartReplace($("#heart1"));
+              fixThis.lost();
+            }
           }
         }
       }
-    }
       for (let i = 0; i < coin.length; i++) {
-        if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
-        if (checkCollisionCoin(coin.eq(i)) === true) {
-          coin.eq(i).remove();
-          coinSound().appendTo($(".game"));
-          scoreContainer += 3;
-          score.html(`  `+scoreContainer);
+        if (
+          $("#heart1").attr(`src`) ===
+          `Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`
+        ) {
+          if (checkCollisionCoin(coin.eq(i)) === true) {
+            coin.eq(i).remove();
+            coinSound().appendTo($(".game"));
+            scoreContainer += 3;
+            score.html(`  ` + scoreContainer);
+          }
         }
       }
-    }
     }, 10);
     var trash = new Trash();
     var coin = new Coin();
   }
+
   createEndScreen() {
+    var body=$("body");
     var endScreen = $(".endScreen");
     var score = $(".score").html();
     var newScore = $(`<p class="scoreEnd">Your Score: ${score}</p>`);
+    var restartButton=$(`<button id="restartButton">Restart!</button>`)
+    restartButton.click(function(){
+      location.reload();
+    })
+    
     endScreen.css(`display`, `flex`);
+    body.css(`background-image`,`url("Images/gameBackground.jpg")`)
     newScore.appendTo(endScreen);
     createEndGif(score).appendTo(endScreen);
-}
+    restartButton.appendTo(endScreen)
+  }
+
   lost() {
-    this.boat=undefined;
+    this.boat = undefined;
     var gameHtml = $(".gameElements");
     var body = $("body");
     clearInterval(this.intervalId);
-    console.log("clearing interval")
-    clearInterval(intervalTrash)
-    clearInterval(intervalCoins)
+    console.log("clearing interval");
+    clearInterval(intervalTrash);
+    clearInterval(intervalCoins);
     this.createEndScreen();
-    failSound().appendTo($("body"))
+    failSound().appendTo($("body"));
     // clearInterval(this.intervalId);
     // gameHtml.remove()
     gameHtml.css("display", "none");
     $(".backgroundMusic").remove();
   }
 }
-function createEndGif(score) {
-    if(score<10){
-        return $(`<img class="finalGif" src="Images/Loser.gif">`)
-    }else if(score>=10&&score<20){
-        return $(`<img class="finalGif" src="Images/10to20.gif">`)
-    }else if(score>=20&&score<30){
-        return $(`<img class="finalGif" src="Images/20to30.gif">`)
-    }else if(score>=30&&score<40){
-        return $(`<img class="finalGif" src="Images/30to40.gif">`)
-    }else if(score>=40&&score<50){
-        return $(`<img class="finalGif" src="Images/40to50.gif">`)
-    }else if(score>=50&&score<68){
-        return $(`<img class="finalGif" src="Images/50to68.gif">`)
-    }else if(score>68&&score<70){
-        return $(`<img class="finalGif" src="Images/nice.gif">`)
-    }else if(score>=70&&score<100){
-        return $(`<img class="finalGif" src="Images/70to100.gif">`)
-    }else if(score>=100){
-        return $(`<img class="finalGif" src="Images/100.gif">`)
-    }
-}
-function failSound(){
-  var audioElement=$(`<audio src="Sounds/Fail-music-sound-effect.mp3" autoplay="true" class="failSoundy">`)
-  return audioElement;
-}
-function backgroundMusic(){
-  var audioElement=$(`<audio src="Sounds/16-Bit Wave Super Nintendo & Sega Genesis RetroWave Mix.mp3" autoplay="true" class="backgroundMusic" volume="5.0">`)
-  return audioElement;
-}
+
 class Boat {
   constructor() {
     this.htmlRef = $("#boat");
@@ -275,24 +225,15 @@ class Boat {
         fixThis.htmlRef.css("left", "-=30");
       } else if (
         e.which === 87 &&
-        fixThis.htmlRef.offset().top > $(".game").offset().top + 20
+        fixThis.htmlRef.offset().top > $(".game").offset().top + 40
       ) {
         fixThis.htmlRef.css("top", "-=30");
       } else if (
         e.which === 83 &&
         fixThis.htmlRef.offset().top - $(".game").offset().top <
-          $(".game").height() - 130
+          $(".game").height() - 190
       ) {
         fixThis.htmlRef.css("top", "+=30");
-      } else if (
-        e.which === 68 &&
-        e.which === 87 &&
-        fixThis.htmlRef.offset().left - $(".game").offset().left <
-          $(".game").width() - 60 &&
-        fixThis.htmlRef.offset().top > $(".game").offset().top + 20
-      ) {
-        fixThis.htmlRef.css("left", "+=30");
-        fixThis.htmlRef.css("top", "-=30");
       }
     });
   }
@@ -315,10 +256,83 @@ function checkCollisionCoin(coin) {
     return false;
   }
 }
+
 function trashReplace(img) {
   img.attr(`src`, `Images/5a3ab9217dabe8.84747121151379792151483896.png`);
   img.attr(`class`, `explosion`);
 }
+
 function heartReplace(img) {
   img.attr(`src`, `Images/blue-cross-icon.png`);
+}
+
+function coinSound() {
+  var audioElement = $(
+    `<audio src="Sounds/coin.wav" autoplay="true" class="coinSoundy">`
+  );
+  return audioElement;
+}
+
+function trashSound() {
+  var audioElement = $(
+    `<audio src="Sounds/shatter.wav" autoplay="true" class="trashSoundy">`
+  );
+  return audioElement;
+}
+
+function failSound() {
+  var audioElement = $(
+    `<audio src="Sounds/Fail-music-sound-effect.mp3" autoplay="true" class="failSoundy">`
+  );
+  return audioElement;
+}
+
+function backgroundMusic() {
+  var audioElement = $(
+    `<audio src="Sounds/16-Bit Wave Super Nintendo & Sega Genesis RetroWave Mix.mp3" autoplay="true" class="backgroundMusic" volume="5.0">`
+  );
+  return audioElement;
+}
+
+function createEndGif(score) {
+  if (score < 10) {
+    return $(`<img class="finalGif" src="Images/Loser.gif">`);
+  } else if (score >= 10 && score < 20) {
+    return $(`<img class="finalGif" src="Images/10to20.gif">`);
+  } else if (score >= 20 && score < 30) {
+    return $(`<img class="finalGif" src="Images/20to30.gif">`);
+  } else if (score >= 30 && score < 40) {
+    return $(`<img class="finalGif" src="Images/30to40.gif">`);
+  } else if (score >= 40 && score < 50) {
+    return $(`<img class="finalGif" src="Images/40to50.gif">`);
+  } else if (score >= 50 && score < 68) {
+    return $(`<img class="finalGif" src="Images/50to68.gif">`);
+  } else if (score > 68 && score < 70) {
+    return $(`<img class="finalGif" src="Images/nice.gif">`);
+  } else if (score >= 70 && score < 100) {
+    return $(`<img class="finalGif" src="Images/70to100.gif">`);
+  } else if (score >= 100) {
+    return $(`<img class="finalGif" src="Images/100.gif">`);
+  }
+}
+
+function isCollide(element1, element2) {
+  var a = {
+    y: 100 - element1.offset().top - element1.height(),
+    x: element1.offset().left,
+    height: element1.height(),
+    width: element1.width()
+  };
+  var b = {
+    y: 100 - element2.offset().top - element2.height(),
+    x: element2.offset().left,
+    height: element2.height(),
+    width: element2.width()
+  };
+  return !(
+    a.y + a.height < b.y ||
+    a.y > b.y + b.height ||
+    a.x + a.width < b.x ||
+    a.x > b.x + b.width
+  );
 }

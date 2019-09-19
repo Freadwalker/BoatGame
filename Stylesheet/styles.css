@@ -9,9 +9,7 @@ body{
 .game{
         width:100vw;
         height:50vw;
-        background-image:url("../Images/Ocean.png");
         background-repeat: no-repeat;
-        border:3px solid black;
         position:relative;
     }
 #boat{
@@ -203,7 +201,7 @@ p{
     width:50vw;
 }
 .finalGif{
-    width:60vw;
+    width:40vw;
 }
 .instructions{
     display:none;
@@ -272,4 +270,15 @@ p{
     .trashChips{
     width:80px;
     }
+}
+#restartButton{
+    font-size:3em;
+    width:20vw;
+    height:5vw;
+    border-radius:10px;
+    border-style:none;
+    animation:colorChange 10s infinite;
+    font-weight:800;
+    color:rgb(189, 180, 180);
+    margin-top:55px;
 }
