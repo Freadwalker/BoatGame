@@ -5,6 +5,7 @@ $("#button").click(function() {
     $(".startingScreen").css(`display`, `none`);
     $(".instructions").css(`display`,`flex`)
     $("body").css(`background-image`,`url("Images/gameBackground.jpg")`)
+    backgroundMusic().appendTo($("body"));
     setTimeout(function(){
   $(".instructions").css(`display`,`none`)
   $(".gameElements").css(`display`, `block`);
@@ -166,7 +167,6 @@ class Game {
       var trash = $(".trash");
       var coin = $(".coin");
       var score = $(".score");
-
       for (let i = 0; i < trash.length; i++) {
         if($("#heart1").attr(`src`)===`Images/kisspng-heart-clip-art-heart-emoji-5b227425b7bf78.5888189215289846137526.png`){
         if (checkCollisionTrash(trash.eq(i)) === true) {
@@ -221,9 +221,11 @@ class Game {
     clearInterval(intervalTrash)
     clearInterval(intervalCoins)
     this.createEndScreen();
+    failSound().appendTo($("body"))
     // clearInterval(this.intervalId);
     // gameHtml.remove()
     gameHtml.css("display", "none");
+    $(".backgroundMusic").remove();
   }
 }
 function createEndGif(score) {
@@ -246,6 +248,14 @@ function createEndGif(score) {
     }else if(score>=100){
         return $(`<img class="finalGif" src="Images/100.gif">`)
     }
+}
+function failSound(){
+  var audioElement=$(`<audio src="Sounds/Fail-music-sound-effect.mp3" autoplay="true" class="failSoundy">`)
+  return audioElement;
+}
+function backgroundMusic(){
+  var audioElement=$(`<audio src="Sounds/16-Bit Wave Super Nintendo & Sega Genesis RetroWave Mix.mp3" autoplay="true" class="backgroundMusic">`)
+  return audioElement;
 }
 class Boat {
   constructor() {
