@@ -86,8 +86,8 @@ class Trash {
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=12px`);
-    }, 60);
+      item.css(`top`, `+=6px`);
+    }, 30);
   }
 }
 class Coin {
@@ -122,8 +122,8 @@ class Coin {
 
   moveCoin(item) {
     setInterval(function() {
-      item.css(`top`, `+=12px`);
-    }, 60);
+      item.css(`top`, `+=6px`);
+    }, 30);
   }
 }
 class Game {
