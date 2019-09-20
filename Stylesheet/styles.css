@@ -282,8 +282,8 @@ p{
     color:rgb(189, 180, 180);
     margin-top:55px;
 }
-video{
-   position:absolute;
+/* video{ */
+   /* position:absolute;
    top:0;
    left:0;
    object-fit:cover;
@@ -299,7 +299,7 @@ video{
     display:flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .trashBottle{
     position:absolute;
