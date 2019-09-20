@@ -68,11 +68,13 @@ body{
     text-align:center;
     font-size:5em;
     font-weight:700;
+    text-shadow:2px 2px black;  
 }
 .startingScreen h2{
     font-size:2em;
     font-weight:800;
     color:rgb(27, 27, 27);
+    color:white;
 }
 p{
     width:30vw;
@@ -85,8 +87,9 @@ p{
 }
 .fact{
     width:40%;
-    text-shadow:10px 10px 10px white;
+    text-shadow:2px 2px black;  
     margin-left:10%;
+    color:white;
 }
 #button{
     font-size:3em;

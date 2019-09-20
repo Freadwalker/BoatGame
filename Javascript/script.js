@@ -242,7 +242,7 @@ class Boat {
       } else if (
         e.which === 83 &&
         fixThis.htmlRef.offset().top - $(".game").offset().top <
-          $(".game").height() - 190
+          $(".game").height()-100
       ) {
         fixThis.htmlRef.css("top", "+=30");
       }
