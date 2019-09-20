@@ -17,6 +17,7 @@ $("#button").click(function() {
 class Trash {
   constructor() {
     this.spawnTrash();
+    this.windowHeight = $(window).height()
   }
   createTrashPlastic(){
     var trashPlastic=$(`<img class="trashPlastic trash" src="Images/plastictrash.png">`)
@@ -77,17 +78,19 @@ class Trash {
       fixThis.moveTrash(randomTrash);
       fixThis.randomizeSpawn(randomTrash);
       randomTrash.appendTo(".game");
-      setTimeout(function() {
-        randomTrash.remove();
-      }, 4000);
     }, 300);
   }
 
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=6px`);
-    }, 30);
+      item.css(`top`, `+=20px`);
+      for(let i =0;i<$(".trash").length;i++){
+        if($(".trash").eq(i).offset().top>=fixThis.windowHeight-150){
+          $(".trash").eq(i).remove();
+        }
+      }
+    }, 100);
   }
 }
 class Coin {
@@ -97,6 +100,7 @@ class Coin {
     );
     this.spawnCoin();
     this.intervalCoins;
+    this.windowHeight = $(window).height()
   }
 
   randomizeSpawn(item) {
@@ -114,16 +118,19 @@ class Coin {
       fixThis.moveCoin(coin);
       fixThis.randomizeSpawn(coin);
       coin.appendTo(".game");
-      setTimeout(function() {
-        coin.remove();
-      }, 3800);
     }, 2500);
   }
 
   moveCoin(item) {
+    var fixThis=this;
     setInterval(function() {
-      item.css(`top`, `+=6px`);
-    }, 30);
+      item.css(`top`, `+=20px`);
+      for(let i =0;i<$(".coin").length;i++){
+        if($(".coin").eq(i).offset().top>=fixThis.windowHeight-150){
+          $(".coin").eq(i).remove();
+        }
+      }
+    }, 100);
   }
 }
 class Game {
