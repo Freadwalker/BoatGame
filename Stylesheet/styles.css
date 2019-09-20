@@ -134,6 +134,38 @@ p{
         background-color:blue;
     }
 }
+@keyframes colorChange2{
+10%{
+    color:darkblue;
+}
+20%{
+    color:black;
+}
+30%{
+    color:darkblue;
+}
+40%{
+    color:blue;
+}
+50%{
+    color:black;
+}
+60%{
+    color:darkblue;
+}
+70%{
+    color:blue;
+}
+80%{
+    color:black;
+}
+90%{
+    color:darkblue;
+}
+100%{
+    color:blue;
+}
+}
 #buttonWrapper{
     margin-top:60px;
     width:100vw;
