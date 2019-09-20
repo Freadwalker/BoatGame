@@ -84,6 +84,7 @@ p{
 .facts{
     display:flex;
     flex-wrap:wrap;
+    background-color:rgba(0, 0, 0, 0.5);    
 }
 .fact{
     width:40%;
