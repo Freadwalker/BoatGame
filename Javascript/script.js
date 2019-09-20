@@ -9,6 +9,7 @@ $("#button").click(function() {
   setTimeout(function() {
     $(".instructions").css(`display`, `none`);
     $(".gameElements").css(`display`, `block`);
+    $("body").css(`background-image`,`url("Images/waves.jpg")`)
     var game = new Game();
   }, 6000);
 });
@@ -205,7 +206,8 @@ class Game {
     clearInterval(intervalTrash);
     clearInterval(intervalCoins);
     this.createEndScreen();
-    failSound().appendTo($("body"));
+    failSound().appendTo(body);
+    body.css(`background-image`,`url("Images/gameBackground.jpg")`)
     // clearInterval(this.intervalId);
     // gameHtml.remove()
     gameHtml.css("display", "none");
