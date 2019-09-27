@@ -84,13 +84,13 @@ class Trash {
   moveTrash(item) {
     var fixThis = this;
     setInterval(function() {
-      item.css(`top`, `+=20px`);
+      item.css(`top`, `+=15px`);
       for(let i =0;i<$(".trash").length;i++){
         if($(".trash").eq(i).offset().top>=fixThis.windowHeight-100){
           $(".trash").eq(i).remove();
         }
       }
-    }, 100);
+    }, 60);
   }
 }
 class Coin {
@@ -124,13 +124,13 @@ class Coin {
   moveCoin(item) {
     var fixThis=this;
     setInterval(function() {
-      item.css(`top`, `+=20px`);
+      item.css(`top`, `+=15px`);
       for(let i =0;i<$(".coin").length;i++){
         if($(".coin").eq(i).offset().top>=fixThis.windowHeight-100){
           $(".coin").eq(i).remove();
         }
       }
-    }, 100);
+    }, 60);
   }
 }
 class Game {
